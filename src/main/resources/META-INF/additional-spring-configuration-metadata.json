@@ -1,0 +1,47 @@
+{"properties": [
+  {
+    "name": "database.entrada.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'database.entrada.datasource.jdbcUrl'"
+  },
+  {
+    "name": "database.saida.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'database.saida.datasource.jdbcUrl'"
+  },
+  {
+    "name": "database.batch.password",
+    "type": "java.lang.String",
+    "description": "A description for 'database.batch.password'"
+  }
+]}{
+    "name": "database.batch.username",
+    "type": "java.lang.String",
+    "description": "A description for 'database.batch.username'"
+  }
+]}{
+    "name": "database.batch.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'database.batch.datasource.jdbcUrl'"
+  }
+]}{
+    "name": "database.saida.password",
+    "type": "java.lang.String",
+    "description": "A description for 'database.saida.password'"
+  }
+]}{
+    "name": "database.saida.username",
+    "type": "java.lang.String",
+    "description": "A description for 'database.saida.username'"
+  }
+]}{
+    "name": "database.entrada.password",
+    "type": "java.lang.String",
+    "description": "A description for 'database.entrada.password'"
+  }
+]}{
+    "name": "database.entrada.username",
+    "type": "java.lang.String",
+    "description": "A description for 'database.entrada.username'"
+  }
+]}
