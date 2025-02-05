@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-public class FuncionarioReader {
+public class FuncionarioReaderConfig {
 	
 	@Bean
 	@StepScope
@@ -38,7 +38,7 @@ public class FuncionarioReader {
 				funcionario.setEmail(rs.getString("email"));
 				funcionario.setSalario(rs.getDouble("salario"));
 				funcionario.setIdade(rs.getInt("idade"));
-				log.info("FUNCIONARIO: {}", funcionario.toString());
+				log.info("READER > FUNCIONARIO CADASTRADO: {}", funcionario.getNome());
 				return funcionario;
 			}
 		};

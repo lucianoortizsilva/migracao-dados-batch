@@ -9,23 +9,29 @@ import org.springframework.batch.item.support.ClassifierCompositeItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+import com.lucianoortizsilva.migracao.config.StepListener;
 import com.lucianoortizsilva.migracao.model.Funcionario;
 
 @Configuration
-public class Step02 {
+public class Step02Config {
 	
 	private final JobRepository jobRepository;
 	private final PlatformTransactionManager transactionManager;
 	
-	public Step02(final JobRepository jobRepository, final PlatformTransactionManager transactionManager) {
+	public Step02Config(final JobRepository jobRepository, final PlatformTransactionManager transactionManager) {
 		this.jobRepository = jobRepository;
 		this.transactionManager = transactionManager;
 	}
 	
 	@Bean
-	Step migrarFuncionariosStep(final ItemReader<Funcionario> buscarFuncionariosReader, final ClassifierCompositeItemWriter<Funcionario> funcionarioClassifierCompositeItemWriter, final FlatFileItemWriter<Funcionario> escreverFuncionarioAposentadoWriter) {
-		return new StepBuilder("migrarFuncionariosStep", jobRepository)//
-				.<Funcionario, Funcionario> chunk(1, transactionManager)//
+	Step step02(//
+			final ItemReader<Funcionario> buscarFuncionariosReader, //
+			final ClassifierCompositeItemWriter<Funcionario> funcionarioClassifierCompositeItemWriter, //
+			final FlatFileItemWriter<Funcionario> escreverFuncionarioAposentadoWriter//
+	) {//
+		return new StepBuilder("step02", jobRepository)//
+				.<Funcionario, Funcionario> chunk(5, transactionManager)//
+				.listener(new StepListener())//
 				.reader(buscarFuncionariosReader)//
 				.writer(funcionarioClassifierCompositeItemWriter)//
 				.stream(escreverFuncionarioAposentadoWriter)//

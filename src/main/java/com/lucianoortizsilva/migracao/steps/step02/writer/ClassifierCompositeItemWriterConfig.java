@@ -30,9 +30,10 @@ public class ClassifierCompositeItemWriterConfig {
 			@Override
 			public ItemWriter<? super Funcionario> classify(final Funcionario funcionario) {
 				if (funcionario.getIdade().intValue() > 65) {
-					log.info("APOSENTADO: {}", funcionario.toString());
+					log.info("WRITER > Funcionario APOSENTADO: {}", funcionario.getNome());
 					return escreverFuncionarioAposentadoWriter;
 				}
+				log.info("WRITER > Funcionario TRABALHANDO: {}", funcionario.getNome());
 				return escreverFuncionarioNaoAposentadoWriter;
 			}
 		};

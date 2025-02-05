@@ -7,7 +7,9 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class DeleteFuncionarioNaoAponsetadoTasklet implements Tasklet {
 	
@@ -20,8 +22,8 @@ public class DeleteFuncionarioNaoAponsetadoTasklet implements Tasklet {
 	@Override
 	public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
 		final String sql = "DELETE FROM funcionario_nao_aposentado";
-		final int rowsDeleted = jdbcTemplate.update(sql);
-		System.out.println("Deleted " + rowsDeleted + " rows from funcionario");
+		final int qtdRegistrosDeletados = jdbcTemplate.update(sql);
+		log.info("Deletou {} registros de funcionario_nao_aposentado", qtdRegistrosDeletados);
 		return RepeatStatus.FINISHED;
 	}
 }

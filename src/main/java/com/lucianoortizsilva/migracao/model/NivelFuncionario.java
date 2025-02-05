@@ -6,10 +6,9 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class Conta implements Serializable {
+public class NivelFuncionario implements Serializable {
 	
 	private static final long serialVersionUID = -1146070616792460992L;
 	private String categoria;
-	private Double saldo;
 	private String email;
 }
