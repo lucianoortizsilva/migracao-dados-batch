@@ -1,47 +1,37 @@
 {"properties": [
   {
-    "name": "database.entrada.datasource.jdbcUrl",
+    "name": "databasea.datasource.jdbcUrl",
     "type": "java.lang.String",
-    "description": "A description for 'database.entrada.datasource.jdbcUrl'"
+    "description": "A description for 'databasea.datasource.jdbcUrl'"
   },
   {
-    "name": "database.saida.datasource.jdbcUrl",
+    "name": "databasea.datasource.username",
     "type": "java.lang.String",
-    "description": "A description for 'database.saida.datasource.jdbcUrl'"
+    "description": "A description for 'databasea.datasource.username'"
   },
   {
-    "name": "database.batch.password",
+    "name": "databasea.datasource.password",
     "type": "java.lang.String",
-    "description": "A description for 'database.batch.password'"
-  }
-]}{
-    "name": "database.batch.username",
+    "description": "A description for 'databasea.datasource.password'"
+  },
+  {
+    "name": "databaseb.datasource.jdbcUrl",
     "type": "java.lang.String",
-    "description": "A description for 'database.batch.username'"
-  }
-]}{
-    "name": "database.batch.datasource.jdbcUrl",
+    "description": "A description for 'databaseb.datasource.jdbcUrl'"
+  },
+  {
+    "name": "databaseb.datasource.username",
     "type": "java.lang.String",
-    "description": "A description for 'database.batch.datasource.jdbcUrl'"
-  }
-]}{
-    "name": "database.saida.password",
+    "description": "A description for 'databaseb.datasource.username'"
+  },
+  {
+    "name": "databaseb.datasource.password",
     "type": "java.lang.String",
-    "description": "A description for 'database.saida.password'"
-  }
-]}{
-    "name": "database.saida.username",
+    "description": "A description for 'databaseb.datasource.password'"
+  },
+  {
+    "name": "spring.datasource.jdbcUrl",
     "type": "java.lang.String",
-    "description": "A description for 'database.saida.username'"
-  }
-]}{
-    "name": "database.entrada.password",
-    "type": "java.lang.String",
-    "description": "A description for 'database.entrada.password'"
-  }
-]}{
-    "name": "database.entrada.username",
-    "type": "java.lang.String",
-    "description": "A description for 'database.entrada.username'"
+    "description": "A description for 'spring.datasource.jdbcUrl'"
   }
 ]}

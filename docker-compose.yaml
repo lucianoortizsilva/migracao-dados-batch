@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   
   svc-database-entrada:
@@ -8,10 +7,10 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - database_entrada:/var/lib/postgresql/data
-      - ./src/main/resources/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - database_a:/var/lib/postgresql/data
+      - ./src/main/resources/scripts/init_database_a.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_DB=database_entrada
+      - POSTGRES_DB=database_a
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     networks:
@@ -23,14 +22,15 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - database_saida:/var/lib/postgresql/data
+      - database_b:/var/lib/postgresql/data
+      - ./src/main/resources/scripts/init_database_b.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_DB=database_saida
+      - POSTGRES_DB=database_b
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     networks:
       - local_network
-
+  
   svc-database-batch:
       container_name: container-database-batch
       image: postgres:14-alpine    
@@ -44,10 +44,9 @@ services:
         - POSTGRES_PASSWORD=postgres
       networks:
         - local_network	  
-
 volumes:
-  database_entrada: {}
-  database_saida: {}
+  database_a: {}
+  database_b: {}
   database_batch: {}
   
 networks:
