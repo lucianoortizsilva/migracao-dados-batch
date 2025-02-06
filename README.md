@@ -8,7 +8,9 @@
 <hr>
 
 ### O que é ?
-É uma POC de um projeto web desenvolvido com spring batch, com o objetivo de para migrar dados.
+É uma POC de um projeto web desenvolvido com spring batch, com o objetivo de migrar alguns dados de um lado para outro.
+
+![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/5f1f031ea8b8b98d52873896f1e6ab226807cf99/src/main/resources/static/800px-arquitetura.png?raw=true)
 
 <hr>
 
@@ -22,5 +24,3 @@
 
 > 3º Executar JOB:
 - Na raiz do repositorio: **`mvn spring-boot:run`**
-
-<hr>
