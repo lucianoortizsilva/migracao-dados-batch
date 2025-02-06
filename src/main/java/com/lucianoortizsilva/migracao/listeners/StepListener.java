@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.config;
+package com.lucianoortizsilva.migracao.listeners;
 
 import org.slf4j.MDC;
 import org.springframework.batch.core.ExitStatus;

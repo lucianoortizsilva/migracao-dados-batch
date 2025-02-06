@@ -9,9 +9,17 @@ import org.springframework.batch.item.support.ClassifierCompositeItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.lucianoortizsilva.migracao.config.StepListener;
+import com.lucianoortizsilva.migracao.listeners.StepListener;
 import com.lucianoortizsilva.migracao.model.Funcionario;
 
+/**
+ * Esse 'Step02' é responsável por:
+ * - 1º READER > Ler dados da tabela funcionario;
+ * - 2º WRITER :
+ *  > Escrever alguns dados da leitura em: files/arquivos-saida/funcionario_aposentados.csv
+ *  OU
+ *  > Escrever alguns dados da leitura em: tabela funcionario_nao_aposentado (PostgreSQL)
+ */
 @Configuration
 public class Step02Config {
 	

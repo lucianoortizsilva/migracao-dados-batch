@@ -6,9 +6,12 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.lucianoortizsilva.migracao.config.StepListener;
+import com.lucianoortizsilva.migracao.listeners.StepListener;
 import com.lucianoortizsilva.migracao.steps.step01.tasklet.DeleteFuncionarioNaoAponsetadoTasklet;
 
+/**
+ * Esse 'Step01' é responsável por deletar todos dados da tabela funcionario_nao_aposentado.
+ */
 @Configuration
 public class Step01Config {
 	

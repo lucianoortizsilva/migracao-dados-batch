@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.job;
+package com.lucianoortizsilva.migracao.jobs;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -14,21 +14,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
 @Configuration
-public class MigracacaoJob {
+public class Job01Config {
 	
 	private final JobRepository jobRepository;
 	
-	public MigracacaoJob(final JobRepository jobRepository) {
+	public Job01Config(final JobRepository jobRepository) {
 		this.jobRepository = jobRepository;
 	}
 	
 	@Bean
-	Job migrarDadosFuncionariosJob(//
+	Job job01(//
 			@Qualifier("step01") final Step step01, //
 			@Qualifier("step02") final Step step02, //
 			@Qualifier("step03") final Step step03//
 	) {
-		return new JobBuilder("migrarDadosFuncionariosJob", jobRepository)//
+		return new JobBuilder("job01", jobRepository)//
 				.start(step01)//
 				.next(parallelSteps(step02, step03))//
 				.next(step03).incrementer(new RunIdIncrementer())//

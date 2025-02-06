@@ -20,13 +20,13 @@ public class CalculoBonusFuncionarioProcessor implements ItemProcessor<NivelFunc
 	}
 	
 	private static Double calcularBonus(final NivelFuncionario nivel) {
-		if (nivel.getCategoria() == "ESPECIALISTA") {
+		if (nivel.getCategoria().equals("ESPECIALISTA")) {
 			return 5000.0;
-		} else if (nivel.getCategoria() == "SENIOR") {
+		} else if (nivel.getCategoria().equals("SENIOR")) {
 			return 3000.0;
-		} else if (nivel.getCategoria() == "PLENO") {
+		} else if (nivel.getCategoria().equals("PLENO")) {
 			return 1000.0;
 		}
-		return 500.00;
+		return 0.10;
 	}
 }
