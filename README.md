@@ -12,14 +12,14 @@
 
 ![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/5f1f031ea8b8b98d52873896f1e6ab226807cf99/src/main/resources/static/800px-arquitetura.png?raw=true)
 
-O **`Step01`** é responsável por deletar todos os dados da tabela funcionario_nao_aposentado (database_b).\
+O **`Step01`** é responsável por deletar todos os dados da tabela funcionario_nao_aposentado (database_b).
 
 O **`Step02`** é responsável por:
   - 1º Reader = Ler dados da tabela funcionario (database_a);
   - 2º Writer = Temos um "ClassifierCompositeItemWriter", reponsável por decidir onde irá escrever:
     - Pode escrever alguns dados de leitura em: files/arquivos-saida/funcionario_aposentados.csv\
       Ou
-    - Pode escrever alguns dados da leitura em: tabela funcionario_nao_aposentado (database_b)\
+    - Pode escrever alguns dados da leitura em: tabela funcionario_nao_aposentado (database_b)
       
 O **`Step03`** é responsável por:
   - 1º Reader = Ler dados do arquivo: files/arquivos-entrada/nivel_funcionario.txt
