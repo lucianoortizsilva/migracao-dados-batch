@@ -17,7 +17,7 @@
 > - sudo docker-compose up <br><br>
 
 
-### 📉 Na pasta ```migracao-backend``` execute
+### 📉 Na pasta ```backend``` execute
 
 > - mvn clean package <br><br>
 > - mvn spring-boot:run <br><br>
