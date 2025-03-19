@@ -7,7 +7,7 @@ services:
       - 5432:5432
     volumes:
       - database_a:/var/lib/postgresql/data
-      - ./src/main/resources/scripts/init_database_a.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./scripts/init_database_a.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_DB=database_a
       - POSTGRES_USER=postgres
@@ -22,7 +22,7 @@ services:
       - 5433:5432
     volumes:
       - database_b:/var/lib/postgresql/data
-      - ./src/main/resources/scripts/init_database_b.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./scripts/init_database_b.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_DB=database_b
       - POSTGRES_USER=postgres
