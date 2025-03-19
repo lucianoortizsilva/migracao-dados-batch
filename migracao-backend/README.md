@@ -7,16 +7,18 @@
 - PostgreSQL
 
 
-
 ### 🎯 O que é ?
 É uma POC de um projeto web desenvolvido com spring batch, com o objetivo de migrar alguns dados de um lado para outro.
-
 
 
 ### 📉 Na raiz do projeto execute
 
 > - sudo docker-compose down -v <br><br>
 > - sudo docker-compose up <br><br>
+
+
+### 📉 Na pasta ```migracao-backend``` execute
+
 > - mvn clean package <br><br>
 > - mvn spring-boot:run <br><br>
 

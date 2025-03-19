@@ -30,11 +30,13 @@ public class ClassificacaoCompostaEnderecoWriterConfig {
 			public ItemWriter<? super EnderecoVO> classify(final EnderecoVO endereco) {
 				final var logradouro = endereco.logradouro().toUpperCase();
 				if (logradouro.startsWith("TRAVESSA")) {
+					log.info("ENCONTROU TRAVESSA :{}", logradouro);
 					return escreveLogradouroTravessaJdbcWriter;
 				} else if (logradouro.startsWith("PRAÇA")) {
+					log.info("ENCONTROU PRAÇA :{}", logradouro);
 					return escreveLogradouroPracaJdbcWriter;
 				} else {
-					return item -> log.warn("Logradouro NÃO classificado: " + logradouro);
+					return item -> log.warn("ENDEREÇO NÃO CLASSIFICADO: {}", logradouro);
 				}
 			}
 		};
