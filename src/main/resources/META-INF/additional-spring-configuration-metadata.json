@@ -33,5 +33,10 @@
     "name": "spring.datasource.jdbcUrl",
     "type": "java.lang.String",
     "description": "A description for 'spring.datasource.jdbcUrl'"
+  },
+  {
+    "name": "databaseb.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'databaseb.datasource.username'"
   }
 ]}

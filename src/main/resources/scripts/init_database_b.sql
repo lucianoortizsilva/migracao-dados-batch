@@ -1,9 +1,15 @@
-DROP TABLE IF EXISTS funcionario_nao_aposentado;
+DROP TABLE IF EXISTS logradouro_travessa;
 
-CREATE TABLE funcionario_nao_aposentado (
-    nome TEXT,
-    idade INT,
-    email VARCHAR(50),
-    salario DOUBLE PRECISION,
-    PRIMARY KEY (email)
+DROP TABLE IF EXISTS logradouro_praca;
+
+CREATE TABLE logradouro_travessa (
+    cep VARCHAR(8),
+    logradouro TEXT,
+    PRIMARY KEY (cep)
+);
+
+CREATE TABLE logradouro_praca (
+    cep VARCHAR(8),
+    logradouro TEXT,
+    PRIMARY KEY (cep)
 );

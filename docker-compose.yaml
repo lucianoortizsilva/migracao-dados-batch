@@ -1,8 +1,7 @@
-version: "3.9"
 services:
   
   svc-database-entrada:
-    container_name: container-database-entrada
+    container_name: container-database-a
     image: postgres:14-alpine    
     ports:
       - 5432:5432
@@ -17,7 +16,7 @@ services:
       - local_network
   
   svc-database-saida:
-    container_name: container-database-saida
+    container_name: container-database-b
     image: postgres:14-alpine    
     ports:
       - 5433:5432
@@ -32,7 +31,7 @@ services:
       - local_network
   
   svc-database-batch:
-      container_name: container-database-batch
+      container_name: container-database-batch-c
       image: postgres:14-alpine    
       ports:
         - 5434:5432
