@@ -1,11 +1,11 @@
-package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step01.chunk;
+package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step02.chunk;
 
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
-import com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step01.EnderecoVO;
+import com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step02.EnderecoVO;
 
 @Configuration
 public class LeituraArquivoEnderecoReaderConfig {

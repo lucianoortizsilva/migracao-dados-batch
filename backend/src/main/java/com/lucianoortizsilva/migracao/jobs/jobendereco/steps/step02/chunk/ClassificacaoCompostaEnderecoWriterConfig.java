@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step01.chunk;
+package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step02.chunk;
 
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
@@ -7,7 +7,7 @@ import org.springframework.batch.item.support.builder.ClassifierCompositeItemWri
 import org.springframework.classify.Classifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step01.EnderecoVO;
+import com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step02.EnderecoVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

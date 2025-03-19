@@ -13,12 +13,14 @@ import org.springframework.context.annotation.Configuration;
 public class JobEnderecoConfig {
 	
 	@Autowired private JobRepository jobRepository;
-	@Autowired private Step step01CriaEnderecoTravessaOuPraca;
+	@Autowired private Step step01DeletaEnderecoTravessaOuPraca;
+	@Autowired private Step step02CriaEnderecoTravessaOuPraca;
 	
 	@Bean
 	Job jobEndereco() {
 		return new JobBuilder("jobEndereco", jobRepository)//
-				.start(step01CriaEnderecoTravessaOuPraca)//
+				.start(step01DeletaEnderecoTravessaOuPraca)//
+				.next(step02CriaEnderecoTravessaOuPraca)//
 				.incrementer(new RunIdIncrementer())//
 				.build();//
 	}
