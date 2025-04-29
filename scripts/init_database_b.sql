@@ -1,14 +1,14 @@
-DROP TABLE IF EXISTS logradouro_travessa;
+DROP TABLE IF EXISTS street_square;
 
-DROP TABLE IF EXISTS logradouro_praca;
+DROP TABLE IF EXISTS street_not_square;
 
-CREATE TABLE logradouro_travessa (
+CREATE TABLE street_square (
     cep VARCHAR(8),
     logradouro TEXT,
     PRIMARY KEY (cep)
 );
 
-CREATE TABLE logradouro_praca (
+CREATE TABLE street_not_square (
     cep VARCHAR(8),
     logradouro TEXT,
     PRIMARY KEY (cep)

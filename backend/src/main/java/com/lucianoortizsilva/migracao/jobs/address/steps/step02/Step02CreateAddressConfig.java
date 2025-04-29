@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step02;
+package com.lucianoortizsilva.migracao.jobs.address.steps.step02;
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.repository.JobRepository;
@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-public class Step02CriaEnderecoTravessaOuPracaConfig {
+public class Step02CreateAddressConfig {
 	
 	@Autowired private JobRepository jobRepository;
 	@Autowired private PlatformTransactionManager transactionManager;
 	
 	@Bean
-	Step step02CriaEnderecoTravessaOuPraca(final ItemReader<EnderecoVO> leituraArquivoEnderecoReader, final ClassifierCompositeItemWriter<EnderecoVO> classificacaoCompostaEnderecoWriter) {
-		return new StepBuilder("step02CriaEnderecoTravessaOuPraca", jobRepository)//
-				.<EnderecoVO, EnderecoVO> chunk(1, transactionManager)//
-				.reader(leituraArquivoEnderecoReader)//
-				.writer(classificacaoCompostaEnderecoWriter)//
+	Step step02CreateAddress(final ItemReader<AddressVO> fileAddressReader, final ClassifierCompositeItemWriter<AddressVO> classificationCompositeAddressWriter) {
+		return new StepBuilder("step02CreateAddress", jobRepository)//
+				.<AddressVO, AddressVO> chunk(1, transactionManager)//
+				.reader(fileAddressReader)//
+				.writer(classificationCompositeAddressWriter)//
 				.build();//
 	}
 }

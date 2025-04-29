@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.jobendereco.steps.step01.tasklet;
+package com.lucianoortizsilva.migracao.jobs.address.steps.step01.tasklet;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Configuration
-public class DeletaEnderecoTravessaOuPracaTasklet implements Tasklet {
+public class DeleteAddressTasklet implements Tasklet {
 	
 	@Autowired private JdbcTemplate JdbcTemplateBDataSource;
 	
 	@Override
 	public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
-		JdbcTemplateBDataSource.execute("DELETE FROM logradouro_travessa");
-		JdbcTemplateBDataSource.execute("DELETE FROM logradouro_praca");
+		JdbcTemplateBDataSource.execute("DELETE FROM street_square");
+		JdbcTemplateBDataSource.execute("DELETE FROM street_not_square");
 		return RepeatStatus.FINISHED;
 	}
 }

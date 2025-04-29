@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.jobendereco;
+package com.lucianoortizsilva.migracao.jobs.address;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -10,17 +10,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class JobEnderecoConfig {
+public class JobAddressConfig {
 	
 	@Autowired private JobRepository jobRepository;
-	@Autowired private Step step01DeletaEnderecoTravessaOuPraca;
-	@Autowired private Step step02CriaEnderecoTravessaOuPraca;
+	@Autowired private Step step01DeleteAddress;
+	@Autowired private Step step02CreateAddress;
 	
 	@Bean
 	Job jobEndereco() {
 		return new JobBuilder("jobEndereco", jobRepository)//
-				.start(step01DeletaEnderecoTravessaOuPraca)//
-				.next(step02CriaEnderecoTravessaOuPraca)//
+				.start(step01DeleteAddress)//
+				.next(step02CreateAddress)//
 				.incrementer(new RunIdIncrementer())//
 				.build();//
 	}
