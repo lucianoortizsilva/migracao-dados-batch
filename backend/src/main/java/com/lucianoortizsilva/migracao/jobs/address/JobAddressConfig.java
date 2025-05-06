@@ -17,8 +17,8 @@ public class JobAddressConfig {
 	@Autowired private Step step02CreateAddress;
 	
 	@Bean
-	Job jobEndereco() {
-		return new JobBuilder("jobEndereco", jobRepository)//
+	Job jobAddress() {
+		return new JobBuilder("jobAddress", jobRepository)//
 				.start(step01DeleteAddress)//
 				.next(step02CreateAddress)//
 				.incrementer(new RunIdIncrementer())//
