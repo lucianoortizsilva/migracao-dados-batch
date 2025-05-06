@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 public class JobFlightConfig {
 	
 	@Autowired private JobRepository jobRepository;
-	@Autowired private Step step01Manager;
+	@Autowired private Step step01CatalogFlightManager;
 	
 	@Bean
 	Job jobFlight() {
 		return new JobBuilder("jobFlight", jobRepository)//
-				.start(step01Manager)//
+				.start(step01CatalogFlightManager)//
 				.incrementer(new RunIdIncrementer())//
 				.build();//
 	}
