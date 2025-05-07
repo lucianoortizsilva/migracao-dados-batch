@@ -1,6 +1,5 @@
 ### 📌 Technologies
-...
-
+![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/17dd7887d33cf6d897e7f72539ffa79310104c87/backend/src/main/resources/static/technologies.png?raw=true)
 
 ### 🎯 What is it ?
 Is a web project development with spring batch, with objective to migrate data of side to other.
