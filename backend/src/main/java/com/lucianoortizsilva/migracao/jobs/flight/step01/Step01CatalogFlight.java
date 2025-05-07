@@ -3,7 +3,6 @@ package com.lucianoortizsilva.migracao.jobs.flight.step01;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.partition.PartitionHandler;
 import org.springframework.batch.core.partition.support.Partitioner;
 import org.springframework.batch.core.partition.support.TaskExecutorPartitionHandler;
@@ -11,18 +10,16 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.mapping.DefaultLineMapper;
-import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 import com.lucianoortizsilva.migracao.jobs.flight.step01.chunk.FlightDTO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Configuration
 public class Step01CatalogFlight {
 	
@@ -39,10 +36,11 @@ public class Step01CatalogFlight {
 	}
 	
 	@Bean
-	Step step01CatalogFlightSlave(final FlatFileItemReader<FlightDTO> reader) {
+	Step step01CatalogFlightSlave(final FlatFileItemReader<FlightDTO> fileFlightReader) {
 		return new StepBuilder("step01CatalogFlightSlave", jobRepository)//
 				.<FlightDTO, FlightDTO> chunk(10, transactionManager)//
-				.reader(reader).writer(items -> System.out.println(Thread.currentThread().getName() + " - Write: " + items))//
+				.reader(fileFlightReader)//
+				.writer(items -> log.info(items.toString()))//
 				.build();//
 	}
 	
@@ -69,46 +67,8 @@ public class Step01CatalogFlight {
 	}
 	
 	@Bean
-	@StepScope
-	FlatFileItemReader<FlightDTO> reader(@Value("#{stepExecutionContext['startLine']}") final Integer startLine, @Value("#{stepExecutionContext['endLine']}") final Integer endLine) {
-		final int linesToRead = endLine - startLine + 1;
-		final FlatFileItemReader<FlightDTO> reader = new FlatFileItemReader<>() {
-			
-			private int linesRead = 0;
-			
-			@Override
-			protected FlightDTO doRead() throws Exception {
-				if (linesRead >= linesToRead) {
-					return null;
-				}
-				final FlightDTO pessoa = super.doRead();
-				if (pessoa != null) {
-					linesRead++;
-				}
-				return pessoa;
-			}
-		};
-		reader.setResource(new FileSystemResource("files/in/itineraries.csv"));
-		final DefaultLineMapper<FlightDTO> mapper = new DefaultLineMapper<>();
-		final DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-		tokenizer.setNames("id", "flightDate", "startingAirport", "destinationAirport", "travelDuration", "isBasicEconomy", "segmentsAirlineName", "segmentsEquipmentDescription");
-		mapper.setLineTokenizer(tokenizer);
-		mapper.setFieldSetMapper(fieldSet -> new FlightDTO(//
-				fieldSet.readString("id"), //
-				fieldSet.readString("flightDate"), //
-				fieldSet.readString("startingAirport"), //
-				fieldSet.readString("destinationAirport"), //
-				fieldSet.readString("travelDuration"), //
-				fieldSet.readBoolean("isBasicEconomy"), //
-				fieldSet.readString("segmentsAirlineName"), //
-				fieldSet.readString("segmentsEquipmentDescription")));//
-		reader.setLineMapper(mapper);
-		return reader;
-	}
-	
-	@Bean
 	TaskExecutor taskExecutor() {
-		return new SimpleAsyncTaskExecutor("partition_executor");
+		return new SimpleAsyncTaskExecutor("partition_");
 	}
 	
 	@Bean

@@ -14,7 +14,7 @@ public class FileAddreddReaderConfig {
 	FlatFileItemReader<AddressVO> fileAddressReader() {
 		return new FlatFileItemReaderBuilder<AddressVO>()//
 				.name("fileAddressReader")//
-				.resource(new FileSystemResource("files/in/address.csv"))//
+				.resource(new FileSystemResource("files/address.csv"))//
 				.delimited()//
 				.names(new String[] { "cep", "logradouro", "complemento1", "complemento2", "complemento3", "complemento4" })//
 				.fieldSetMapper(fieldSet -> new AddressVO(fieldSet.readString("cep"), fieldSet.readString("logradouro")))//

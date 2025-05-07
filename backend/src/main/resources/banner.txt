@@ -1,0 +1,18 @@
+                                                                               
+${AnsiColor.RED}          JJJJJJJJJJJ     OOOOOOOOO     BBBBBBBBBBBBBBBBB      SSSSSSSSSSSSSSS 
+${AnsiColor.RED}          J:::::::::J   OO:::::::::OO   B::::::::::::::::B   SS:::::::::::::::S
+${AnsiColor.RED}          J:::::::::J OO:::::::::::::OO B::::::BBBBBB:::::B S:::::SSSSSS::::::S
+${AnsiColor.RED}          JJ:::::::JJO:::::::OOO:::::::OBB:::::B     B:::::BS:::::S     SSSSSSS
+${AnsiColor.RED}            J:::::J  O::::::O   O::::::O  B::::B     B:::::BS:::::S            
+${AnsiColor.RED}            J:::::J  O:::::O     O:::::O  B::::B     B:::::BS:::::S            
+${AnsiColor.RED}            J:::::J  O:::::O     O:::::O  B::::BBBBBB:::::B  S::::SSSS         
+${AnsiColor.RED}            J:::::j  O:::::O     O:::::O  B:::::::::::::BB    SS::::::SSSSS    
+${AnsiColor.RED}            J:::::J  O:::::O     O:::::O  B::::BBBBBB:::::B     SSS::::::::SS  
+${AnsiColor.RED}JJJJJJJ     J:::::J  O:::::O     O:::::O  B::::B     B:::::B       SSSSSS::::S 
+${AnsiColor.RED}J:::::J     J:::::J  O:::::O     O:::::O  B::::B     B:::::B            S:::::S
+${AnsiColor.RED}J::::::J   J::::::J  O::::::O   O::::::O  B::::B     B:::::B            S:::::S
+${AnsiColor.RED}J:::::::JJJ:::::::J  O:::::::OOO:::::::OBB:::::BBBBBB::::::BSSSSSSS     S:::::S
+ ${AnsiColor.RED}JJ:::::::::::::JJ    OO:::::::::::::OO B:::::::::::::::::B S::::::SSSSSS:::::S
+   ${AnsiColor.RED}JJ:::::::::JJ        OO:::::::::OO   B::::::::::::::::B  S:::::::::::::::SS 
+     ${AnsiColor.RED}JJJJJJJJJ            OOOOOOOOO     BBBBBBBBBBBBBBBBB    SSSSSSSSSSSSSSS
+     
