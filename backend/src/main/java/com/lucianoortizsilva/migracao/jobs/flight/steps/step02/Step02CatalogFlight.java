@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.flight.step01;
+package com.lucianoortizsilva.migracao.jobs.flight.steps.step02;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,8 @@ import org.springframework.batch.core.partition.support.TaskExecutorPartitionHan
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ExecutionContext;
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,31 +18,34 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.lucianoortizsilva.migracao.jobs.flight.step01.chunk.FlightDTO;
+import com.lucianoortizsilva.migracao.jobs.flight.steps.step02.chunk.FlightDTO;
+import com.lucianoortizsilva.migracao.jobs.flight.steps.step02.chunk.FlightEconomicDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-public class Step01CatalogFlight {
+public class Step02CatalogFlight {
 	
 	@Autowired private JobRepository jobRepository;
 	@Autowired private PlatformTransactionManager transactionManager;
 	private final static int FIFTY_THOUSAND = 50000;
 	
 	@Bean
-	Step step01CatalogFlightManager() throws Exception {
-		return new StepBuilder("step01CatalogFlightManager", jobRepository)//
-				.partitioner("step01CatalogFlightSlave", partitioner())//
+	Step step02CatalogFlightManager() throws Exception {
+		return new StepBuilder("step02CatalogFlightManager", jobRepository)//
+				.partitioner("step02CatalogFlightSlave", partitioner())//
 				.partitionHandler(partitionHandlerX(null))//
 				.build();//
 	}
 	
 	@Bean
-	Step step01CatalogFlightSlave(final FlatFileItemReader<FlightDTO> fileFlightReader) {
-		return new StepBuilder("step01CatalogFlightSlave", jobRepository)//
-				.<FlightDTO, FlightDTO> chunk(10, transactionManager)//
+	Step step02CatalogFlightSlave(final FlatFileItemReader<FlightDTO> fileFlightReader, final ItemProcessor<FlightDTO, FlightEconomicDTO> flightProcessor, final ItemWriter<FlightEconomicDTO> flightWriter) {
+		return new StepBuilder("step02CatalogFlightSlave", jobRepository)//
+				.<FlightDTO, FlightEconomicDTO> chunk(12500, transactionManager)//
 				.reader(fileFlightReader)//
-				.writer(items -> log.info(items.toString()))//
+				.processor(flightProcessor)//
+				.writer(flightWriter)//
+				.stream(fileFlightReader)//
 				.build();//
 	}
 	
@@ -50,7 +55,7 @@ public class Step01CatalogFlight {
 			final Map<String, ExecutionContext> partitionMap = new HashMap<>();
 			final int range = FIFTY_THOUSAND / 4;
 			final int remainder = FIFTY_THOUSAND % 4;
-			int start = 0;
+			int start = 1;
 			for (int i = 0; i < 4; i++) {
 				int end = start + range - 1;
 				if (i < remainder) {
@@ -72,10 +77,10 @@ public class Step01CatalogFlight {
 	}
 	
 	@Bean
-	PartitionHandler partitionHandlerX(final Step step01CatalogFlightSlave) throws Exception {
+	PartitionHandler partitionHandlerX(final Step step02CatalogFlightSlave) throws Exception {
 		final TaskExecutorPartitionHandler taskExecutorPartitionHandler = new TaskExecutorPartitionHandler();
 		taskExecutorPartitionHandler.setTaskExecutor(taskExecutor());
-		taskExecutorPartitionHandler.setStep(step01CatalogFlightSlave);
+		taskExecutorPartitionHandler.setStep(step02CatalogFlightSlave);
 		return taskExecutorPartitionHandler;
 	}
 }

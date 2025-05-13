@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.migracao.jobs.flight.step01.chunk;
+package com.lucianoortizsilva.migracao.jobs.flight.steps.step02.chunk;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -43,10 +43,11 @@ public class FileFlightReaderConfig {
 				fieldSet.readString("startingAirport"), //
 				fieldSet.readString("destinationAirport"), //
 				fieldSet.readString("travelDuration"), //
-				fieldSet.readBoolean("isBasicEconomy"), //
+				Boolean.parseBoolean(fieldSet.readString("isBasicEconomy")), //
 				fieldSet.readString("segmentsAirlineName"), //
 				fieldSet.readString("segmentsEquipmentDescription")));//
 		reader.setLineMapper(mapper);
+		reader.setLinesToSkip(startLine - 1);
 		return reader;
 	}
 }

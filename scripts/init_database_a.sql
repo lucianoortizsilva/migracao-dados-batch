@@ -1,7 +1,10 @@
-DROP TABLE IF EXISTS teste;
+DROP TABLE IF EXISTS flight_economic;
 
-CREATE TABLE teste (
-    nome TEXT,
-    email VARCHAR(50),
-    PRIMARY KEY (email)
+CREATE TABLE flight_economic (
+    id VARCHAR(33),
+    flightDate TEXT,
+	startingAirport TEXT,
+	destinationAirport TEXT,
+	segmentsAirlineName TEXT,
+    PRIMARY KEY (id)
 );

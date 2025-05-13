@@ -1,5 +1,5 @@
 ## 📌 Technologies
-![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/f75a1bca625ad95dfa4978fb108b6cf830a3fabe/backend/src/main/resources/static/technologies_.png?raw=true)
+![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/f75a1bca625ad95dfa4978fb108b6cf830a3fabe/backend/src/main/resources/static/technologies.png?raw=true)
 
 <br>
 

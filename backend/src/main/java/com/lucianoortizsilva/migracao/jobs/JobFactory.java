@@ -30,7 +30,7 @@ public class JobFactory {
 		if (isNull(bo)) {
 			final StringBuilder message = new StringBuilder();
 			message.append("\n#########################################");
-			message.append("\nEsse algoritmo ainda não foi desacoplado.");
+			message.append("\nJob name not found.");
 			message.append("\n#########################################");
 			throw new RuntimeException("JOB NÃO ENCONTRADO - ".concat(message.toString()));
 		}
