@@ -1,6 +1,6 @@
 ## 📌 Technologies
-![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/f75a1bca625ad95dfa4978fb108b6cf830a3fabe/backend/src/main/resources/static/technologies.png?raw=true)
-
+![](https://github.com/lucianoortizsilva/migracao-dados-batch/blob/27e2c6d54ca65938587dd515628f6347b3ff96ca/backend/src/main/resources/static/technologies.png?raw=true)
+    
 <br>
 
 ## 🎯 What is it ?
@@ -10,7 +10,7 @@ Is a web project development with spring batch, with objective to migrate data o
 
 ## 🚀 How to execute the project ?
 
-### In root folder execute
+### In ``root`` folder execute
 
 > - sudo docker-compose down -v <br><br>
 > - sudo docker-compose up <br><br>
