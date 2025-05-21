@@ -1,0 +1,22 @@
+package com.lucianoortizsilva.migration.jobs.address.steps.step02.chunk;
+
+import javax.sql.DataSource;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import com.lucianoortizsilva.migration.jobs.address.steps.step02.AddressVO;
+
+@Configuration
+public class StreetSquareJdbcWriterConfig {
+	
+	@Bean
+	JdbcBatchItemWriter<AddressVO> streetSquareJdbcWriter(@Qualifier("datawarehouseDataSource") final DataSource dataSource) {
+		return new JdbcBatchItemWriterBuilder<AddressVO>()//
+				.dataSource(dataSource)//
+				.sql("INSERT INTO street_square (cep, logradouro) VALUES (:cep, :logradouro)")//
+				.beanMapped()//
+				.build();//
+	}
+}

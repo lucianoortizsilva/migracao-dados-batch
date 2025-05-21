@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lucianoortizsilva</groupId>
-	<artifactId>migracao</artifactId>
+	<artifactId>migration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>migracao</name>
+	<name>migration</name>
 	<description>Projeto web para migrar dados, usando spring batch</description>
 	<properties>
 		<java.version>21</java.version>
@@ -73,6 +73,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>migration</finalName>		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
