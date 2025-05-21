@@ -12,7 +12,7 @@ import com.lucianoortizsilva.migracao.jobs.address.steps.step02.AddressVO;
 public class StreetSquareJdbcWriterConfig {
 	
 	@Bean
-	JdbcBatchItemWriter<AddressVO> streetSquareJdbcWriter(@Qualifier("databaseBDataSource") final DataSource dataSource) {
+	JdbcBatchItemWriter<AddressVO> streetSquareJdbcWriter(@Qualifier("datawarehouseDataSource") final DataSource dataSource) {
 		return new JdbcBatchItemWriterBuilder<AddressVO>()//
 				.dataSource(dataSource)//
 				.sql("INSERT INTO street_square (cep, logradouro) VALUES (:cep, :logradouro)")//

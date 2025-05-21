@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 public class FlightWriterConfig {
 	
 	@Bean
-	JdbcBatchItemWriter<FlightEconomicDTO> flightWriter(@Qualifier("databaseADataSource") final DataSource dataSource) {
+	JdbcBatchItemWriter<FlightEconomicDTO> flightWriter(@Qualifier("datalakeDataSource") final DataSource dataSource) {
 		final var sql = """
-				INSERT INTO flight_economic(id, flightDate, startingAirport, destinationAirport, segmentsAirlineName)
+				INSERT INTO flight(id, flightDate, startingAirport, destinationAirport, segmentsAirlineName)
 				     VALUES (:id, :flightDate, :startingAirport, :destinationAirport, :segmentsAirlineName)
 					""";
 		return new JdbcBatchItemWriterBuilder<FlightEconomicDTO>()//

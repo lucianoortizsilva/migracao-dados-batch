@@ -12,31 +12,31 @@ services:
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
           
-  svc-database-entrada:
-    container_name: container-database-a
+  svc-datalake-postgre:
+    container_name: container-datalake-postgre
     image: postgres:14-alpine    
     ports:
       - 5432:5432
     volumes:
-      - database_a:/var/lib/postgresql/data
-      - ./scripts/init_database_a.sql:/docker-entrypoint-initdb.d/init.sql
+      - datalake_db:/var/lib/postgresql/data
+      - ./scripts/init_database_datalake.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_DB=database_a
+      - POSTGRES_DB=datalake_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     networks:
       - local_network
   
-  svc-database-saida:
-    container_name: container-database-b
+  svc-datawarehouse-postgre:
+    container_name: container-datawarehouse-postgre
     image: postgres:14-alpine    
     ports:
       - 5433:5432
     volumes:
-      - database_b:/var/lib/postgresql/data
-      - ./scripts/init_database_b.sql:/docker-entrypoint-initdb.d/init.sql
+      - datawarehouse_db:/var/lib/postgresql/data
+      - ./scripts/init_datawarehouse.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_DB=database_b
+      - POSTGRES_DB=datawarehouse_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     networks:
@@ -56,8 +56,8 @@ services:
       networks:
         - local_network	  
 volumes:
-  database_a: {}
-  database_b: {}
+  datalake_db: {}
+  datawarehouse_db: {}
   database_batch: {}
   rabbitmq_data: {}
   

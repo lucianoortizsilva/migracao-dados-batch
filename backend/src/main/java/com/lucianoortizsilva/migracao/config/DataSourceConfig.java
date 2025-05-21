@@ -18,14 +18,14 @@ public class DataSourceConfig {
 	}
 	
 	@Bean
-	@ConfigurationProperties(prefix = "databasea.datasource")
-	DataSource databaseADataSource() {
+	@ConfigurationProperties(prefix = "datalake.datasource")
+	DataSource datalakeDataSource() {
 		return DataSourceBuilder.create().build();
 	}
 	
 	@Bean
-	@ConfigurationProperties(prefix = "databaseb.datasource")
-	DataSource databaseBDataSource() {
+	@ConfigurationProperties(prefix = "datawarehouse.datasource")
+	DataSource datawarehouseDataSource() {
 		return DataSourceBuilder.create().build();
 	}
 }

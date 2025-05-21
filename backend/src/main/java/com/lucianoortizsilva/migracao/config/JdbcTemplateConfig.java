@@ -14,13 +14,13 @@ public class JdbcTemplateConfig {
 		return new JdbcTemplate(dataSource);
 	}
 	
-	@Bean(name = "JdbcTemplateADataSource")
-	JdbcTemplate databaseADataSource(@Qualifier("databaseADataSource") final DataSource dataSource) {
+	@Bean(name = "JdbcTemplateDatalakeSource")
+	JdbcTemplate datalakeDataSource(@Qualifier("datalakeDataSource") final DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 	
-	@Bean(name = "JdbcTemplateBDataSource")
-	JdbcTemplate secondaryJdbcTemplate(@Qualifier("databaseBDataSource") final DataSource dataSource) {
+	@Bean(name = "JdbcTemplateDatawarehouseSource")
+	JdbcTemplate secondaryJdbcTemplate(@Qualifier("datawarehouseDataSource") final DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 }

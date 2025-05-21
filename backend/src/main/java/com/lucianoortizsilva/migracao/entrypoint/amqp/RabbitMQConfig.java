@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 	
 	public static final String EXCHANGE_NAME = "job.exchange";
-	public static final String QUEUE = "processamento_job_queue";
+	public static final String QUEUE = "job_queue";
 	
 	@Bean
 	Queue queue() {

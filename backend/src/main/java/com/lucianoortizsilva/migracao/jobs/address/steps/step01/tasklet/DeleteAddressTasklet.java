@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class DeleteAddressTasklet implements Tasklet {
 	
-	@Autowired private JdbcTemplate JdbcTemplateBDataSource;
+	@Autowired private JdbcTemplate JdbcTemplateDatawarehouseSource;
 	
 	@Override
 	public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
-		JdbcTemplateBDataSource.execute("DELETE FROM street_square");
-		JdbcTemplateBDataSource.execute("DELETE FROM street_not_square");
+		JdbcTemplateDatawarehouseSource.execute("DELETE FROM street_square");
+		JdbcTemplateDatawarehouseSource.execute("DELETE FROM street_not_square");
 		return RepeatStatus.FINISHED;
 	}
 }
